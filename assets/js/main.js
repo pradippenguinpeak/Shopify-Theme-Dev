@@ -465,6 +465,50 @@ if (productThumbsEl && productMainEl) {
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
   })();
 
+  // Delegated quantity handlers for any qty controls (cart items, product blocks)
+  document.addEventListener('click', function (e) {
+    const plusBtn = e.target.closest('.qty-plus');
+    const minusBtn = e.target.closest('.qty-minus');
+
+    if (!plusBtn && !minusBtn) return;
+
+    // Find the nearest scope that contains the related input: cart-item or product-quantity
+    const scope = (plusBtn || minusBtn).closest('.cart-item') || (plusBtn || minusBtn).closest('.product-quantity') || (plusBtn || minusBtn).parentElement;
+    const input = scope ? scope.querySelector('.qty-input') : document.querySelector('.qty-input');
+    if (!input) return;
+
+    const min = parseInt(input.getAttribute('min'), 10) || 1;
+    const max = parseInt(input.getAttribute('max'), 10) || 999;
+    let val = parseInt(input.value, 10) || 0;
+
+    if (plusBtn) {
+      if (val < max) input.value = val + 1;
+    } else if (minusBtn) {
+      if (val > min) input.value = val - 1;
+    }
+  });
+
+  // Ensure manual input respects min/max
+  document.addEventListener('input', function (e) {
+    if (!e.target || !e.target.classList) return;
+    if (!e.target.classList.contains('qty-input')) return;
+    const input = e.target;
+    const min = parseInt(input.getAttribute('min'), 10) || 1;
+    const max = parseInt(input.getAttribute('max'), 10) || 999;
+    let val = parseInt(input.value, 10);
+    if (isNaN(val)) return;
+    if (val < min) input.value = min;
+    if (val > max) input.value = max;
+  });
+
+  // Remove cart item when delete icon clicked
+  document.addEventListener('click', function (e) {
+    const rem = e.target.closest('.cart-item__remove');
+    if (!rem) return;
+    const item = rem.closest('.cart-item');
+    if (item) item.remove();
+  });
+
   // Color Swatch Selection
   document.querySelectorAll('.color-swatches .swatch').forEach(function (swatch) {
     swatch.addEventListener('click', function () {
