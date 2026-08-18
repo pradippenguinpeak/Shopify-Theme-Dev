@@ -355,6 +355,116 @@ if (productThumbsEl && productMainEl) {
   mobileClose?.addEventListener('click', closeMenu);
   mobileOverlay?.addEventListener('click', closeMenu);
 
+  // Megamenu: support multiple dropdown parents (desktop hover, mobile click)
+  (function initMegamenus() {
+    const parents = Array.from(document.querySelectorAll('.megamenu-parent'));
+
+    if (!parents.length) return;
+
+    function closeAll() {
+      parents.forEach(function (p) {
+        const m = p.querySelector('.megamenu');
+        if (m) m.setAttribute('aria-hidden', 'true');
+        p.classList.remove('open');
+      });
+    }
+
+    function openFor(p) {
+      closeAll();
+      const m = p.querySelector('.megamenu');
+      if (m) m.setAttribute('aria-hidden', 'false');
+      p.classList.add('open');
+    }
+
+    // Desktop hover
+    parents.forEach(function (p) {
+      const m = p.querySelector('.megamenu');
+
+      p.addEventListener('mouseenter', function () {
+        if (window.innerWidth >= 992) openFor(p);
+      });
+
+      p.addEventListener('mouseleave', function () {
+        if (window.innerWidth >= 992) {
+          const mm = p.querySelector('.megamenu');
+          if (mm) mm.setAttribute('aria-hidden', 'true');
+          p.classList.remove('open');
+        }
+      });
+
+      // Mobile: toggle on click of the parent link
+      const link = p.querySelector('a');
+      if (link) {
+        link.addEventListener('click', function (e) {
+          if (window.innerWidth < 992) {
+            e.preventDefault();
+            const isOpen = p.classList.toggle('open');
+            if (p.querySelector('.megamenu')) p.querySelector('.megamenu').setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+            // close others
+            parents.forEach(function (other) {
+              if (other !== p) {
+                const om = other.querySelector('.megamenu');
+                if (om) om.setAttribute('aria-hidden', 'true');
+                other.classList.remove('open');
+              }
+            });
+          }
+        });
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      const clickedInside = parents.some(function (p) { return p.contains(e.target); });
+      if (!clickedInside) closeAll();
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') closeAll();
+    });
+  })();
+
+  // Mobile submenu toggle inside mobile menu
+  document.querySelectorAll('.mobile-has-child').forEach(function (item) {
+    const btn = item.querySelector('.mobile-sub-open');
+    const submenu = item.querySelector('.mobile-submenu');
+    btn?.addEventListener('click', function (e) {
+      e.preventDefault();
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+
+  // Cart drawer open/close
+  (function initCartDrawer() {
+    const cartBtns = Array.from(document.querySelectorAll('.action-btn[aria-label="Cart"]'));
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartClose = document.getElementById('cartClose');
+
+    if (!cartDrawer) return;
+
+    function openCart() {
+      cartDrawer.classList.add('is-open');
+      cartDrawer.setAttribute('aria-hidden', 'false');
+      cartOverlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('is-open');
+      cartDrawer.setAttribute('aria-hidden', 'true');
+      cartOverlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    cartBtns.forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); openCart(); }); });
+    cartOverlay?.addEventListener('click', closeCart);
+    cartClose?.addEventListener('click', closeCart);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCart(); });
+  })();
+
   // Color Swatch Selection
   document.querySelectorAll('.color-swatches .swatch').forEach(function (swatch) {
     swatch.addEventListener('click', function () {

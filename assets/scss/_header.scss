@@ -64,17 +64,17 @@
     margin: 0;
     padding: 0;
 
-    li{
+    &>li{
       margin: 0 20px;
-      a{
+      &>a{
         @extend .nav-link-text;
         position: relative;
-        padding: 4px 0;
+        padding:35px 0;
 
         &::after {
           content: '';
           position: absolute;
-          bottom: 0;
+          bottom:35px;
           left: 0;
           width: 0;
           height: 1px;
@@ -94,7 +94,7 @@
       &.has-child {
         position: relative;
 
-        span {
+        &>span {
           position: absolute;
           top: 6px;
           right: -15px;
