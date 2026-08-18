@@ -1,0 +1,736 @@
+// =============================================
+
+// Typography System — Clothing Theme (Figma)
+
+// =============================================
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+
+
+// ---- Mixins (Figma text styles) ----
+
+
+
+@mixin type-section-label {
+
+  font-family: $font-sans;
+
+  font-size: $fs-body-lg;
+
+  font-weight: $fw-regular;
+
+  text-transform: uppercase;
+
+  color: $color-gray-light;
+
+  line-height: $lh-normal;
+
+}
+
+
+
+@mixin type-section-title {
+
+  font-family: $font-serif;
+
+  font-size: $fs-h1;
+
+  font-weight: $fw-regular;
+
+  line-height: $lh-snug;
+
+  color: $color-black;
+
+}
+
+
+
+@mixin type-section-title-sans {
+
+  font-family: $font-sans;
+
+  font-size: $fs-h2;
+
+  font-weight: $fw-semibold;
+
+  line-height: $lh-snug;
+
+  color: $color-black;
+
+
+
+  @media (max-width: $bp-md) {
+
+    font-size: 28px;
+
+  }
+
+}
+
+
+
+@mixin type-view-all {
+
+  font-family: $font-sans;
+
+  font-size: $fs-body-lg;
+
+  font-weight: $fw-regular;
+
+  text-transform: uppercase;
+
+  color: $color-gray;
+
+  line-height: $lh-normal;
+
+}
+
+
+
+@mixin type-product-name {
+
+  font-family: $font-sans;
+
+  font-size: $fs-product-name;
+
+  font-weight: $fw-regular;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.03em;
+
+  line-height: 1.4;
+
+  color: $color-gray;
+
+}
+
+
+
+@mixin type-product-price {
+
+  font-family: $font-sans;
+
+  font-size: $fs-product-price;
+
+  font-weight: $fw-semibold;
+
+  line-height: $lh-normal;
+
+}
+
+
+
+@mixin type-badge {
+
+  font-family: $font-sans;
+
+  font-size: $fs-body-sm;
+
+  text-transform: uppercase;
+
+  line-height: 1;
+
+}
+
+
+
+@mixin type-btn {
+
+  font-family: $font-sans;
+
+  font-size: $fs-h6;
+  line-height: $lh-normal;
+  min-height: 48px;
+
+}
+
+
+
+@mixin type-hero-title {
+
+  font-family: $font-serif;
+
+  font-size: $fs-display;
+
+  font-weight: $fw-regular;
+
+  line-height: $lh-tight;
+
+  letter-spacing: $ls-tight;
+
+  text-transform: uppercase;
+
+
+
+  @media (max-width: $bp-md) {
+
+    font-size: 40px;
+
+  }
+
+
+
+  @media (max-width: $bp-sm) {
+
+    font-size: 32px;
+
+  }
+
+}
+
+
+
+@mixin type-countdown-value {
+
+  font-family: $font-serif;
+
+  font-size: $fs-h1;
+
+  font-weight: $fw-regular;
+
+  line-height: 1;
+
+  color: $color-black;
+
+}
+
+
+
+// ---- Base ----
+
+
+
+body {
+
+  font-family: $font-sans;
+
+  font-size: $fs-body;
+
+  font-weight: $fw-regular;
+
+  line-height: $lh-normal;
+
+  color: $color-gray-dark;
+
+  background-color: $color-white;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+
+
+h1, h2, h3, h4, h5, h6,
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+
+  font-family: $font-serif;
+
+  font-weight: $fw-regular;
+
+  line-height: $lh-tight;
+
+  color: $color-black;
+
+  margin-bottom: 0.5em;
+
+}
+
+
+
+h1, .h1 {
+
+  font-size: $fs-h1;
+
+
+
+  @media (max-width: $bp-md) {
+
+    font-size: 36px;
+
+  }
+
+}
+
+
+
+h2, .h2 {
+
+  font-size: $fs-h2;
+
+
+
+  @media (max-width: $bp-md) {
+
+    font-size: 28px;
+
+  }
+
+}
+
+
+
+h3, .h3 {
+
+  font-size: $fs-h3;
+
+
+
+  @media (max-width: $bp-md) {
+
+    font-size: 24px;
+
+  }
+
+}
+
+
+
+h4, .h4 {
+
+  font-size: $fs-h4;
+
+}
+
+
+
+h5, .h5 {
+
+  font-size: $fs-h5;
+
+}
+
+
+
+h6, .h6 {
+
+  font-size: $fs-h6;
+
+}
+
+
+
+.display-heading {
+
+  font-family: $font-serif;
+
+  font-size: $fs-display;
+
+  font-weight: $fw-regular;
+
+  line-height: $lh-tight;
+
+  letter-spacing: $ls-tight;
+
+  color: $color-black;
+
+
+
+  @media (max-width: $bp-md) {
+
+    font-size: 40px;
+
+  }
+
+}
+
+
+
+.section-title {
+
+  @include type-section-title;
+
+  margin: 0;
+
+  text-align: left;
+  font-weight: normal;
+
+
+  &--sans {
+
+    @include type-section-title-sans;
+    font-weight: normal;
+
+  }
+
+
+
+  &--light {
+
+    color: $color-white;
+
+  }
+
+}
+
+
+
+.section-subtitle {
+
+  @include type-section-label;
+
+  margin-bottom: 8px;
+
+  text-align: left;
+
+
+
+  &--light {
+
+    color: rgba(255, 255, 255, 1);
+
+  }
+
+}
+
+
+
+// Row header: label + title (left) | view all (right)
+
+.section-header {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+
+
+
+  @media (max-width: $bp-md) {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+  }
+
+}
+
+
+
+.section-header__text {
+
+  .section-subtitle {
+
+    margin-bottom: 8px;
+
+  }
+
+
+
+  .section-title {
+
+    margin: 0;
+
+  }
+
+}
+
+
+
+.section-view-all {
+
+  @include type-view-all;
+
+  border-bottom: 1px solid $color-gray;
+
+  padding-bottom: 2px;
+
+  transition: opacity $transition-base;
+
+  white-space: nowrap;
+
+
+
+  &:hover {
+
+    opacity: 0.6;
+
+    color: $color-gray;
+
+  }
+
+}
+
+
+
+// Stacked heading block (FAQ, promo, footer, looks we love)
+
+.section-heading-block {
+
+  .section-subtitle {
+
+    margin-bottom: 8px;
+
+  }
+
+
+
+  .section-title {
+
+    margin-bottom: 24px;
+    @media(max-width: $bp-md) {
+      margin-bottom: 14px;
+    }
+
+  }
+
+
+
+  &--lg .section-title {
+
+    margin-bottom: 36px;
+
+  }
+
+
+
+  &--sm .section-title {
+
+    margin-bottom: 16px;
+
+  }
+
+
+
+  &--center {
+
+    text-align: center;
+
+
+
+    .section-subtitle,
+
+    .section-title {
+
+      text-align: center;
+
+    }
+
+  }
+
+}
+
+
+
+// Centered standalone heading (social, lookbook)
+
+.section-heading {
+
+  margin-bottom: 40px;
+
+
+
+  .section-subtitle {
+
+    text-align: center;
+
+    margin-bottom: 8px;
+
+  }
+
+
+
+  .section-title {
+
+    text-align: center;
+
+    margin: 0;
+
+  }
+
+}
+
+
+
+.text-body-lg {
+
+  font-size: $fs-body-lg;
+
+  line-height: $lh-relaxed;
+
+}
+
+
+
+.text-body-sm {
+
+  font-size: $fs-body-sm;
+
+  line-height: $lh-normal;
+
+}
+
+
+
+.text-caption {
+
+  font-size: $fs-caption;
+
+  line-height: $lh-normal;
+
+  color: $color-gray-light;
+
+}
+
+
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+  transition: color $transition-base;
+
+
+
+  &:hover {
+
+    color: $color-gray;
+
+  }
+
+}
+
+
+
+.product-name {
+
+  @include type-product-name;
+
+  color: $color-black;
+
+  text-transform: capitalize;
+
+  margin-bottom: 4px;
+
+}
+
+
+
+.product-category {
+
+  @include type-section-label;
+
+  margin-bottom: 6px;
+
+}
+
+
+
+.product-price {
+
+  @include type-product-price;
+
+  color: $color-black;
+
+}
+
+
+
+.product-price--sale {
+
+  color: $color-sale-red;
+
+}
+
+
+
+.product-price--original {
+
+  font-size: $fs-body-sm;
+
+  font-weight: $fw-regular;
+
+  text-decoration: line-through;
+
+  color: $color-gray-light;
+
+  margin-left: 8px;
+
+}
+
+
+
+.badge-label {
+
+  @include type-badge;
+
+  padding: 4px 10px;
+
+  background: $color-black;
+
+  color: $color-white;
+
+}
+
+
+
+.nav-link-text {
+
+  font-family: $font-sans;
+
+  font-size: $fs-body-lg;
+
+  font-weight: $fw-regular;
+
+  text-transform: uppercase;
+
+  letter-spacing: $ls-wide;
+
+  color: $color-black;
+
+}
+
+
+
+.btn-text {
+
+  @include type-btn;
+
+}
+
+.inline-btns{
+  display: flex;
+  gap:12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.default-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  background: #000;
+  color: $color-white;
+  border: 2px solid $color-black;
+  @include type-btn;
+  transition: all $transition-base;
+  width: fit-content;
+  font-size: $fs-h6;
+  &.outline {
+    background: transparent;
+    color: $color-black;
+    &:hover {
+      background: #000;
+      color: $color-white;
+    }
+  }
+  &:hover {
+    background: transparent;
+    color: $color-black;
+  }
+}

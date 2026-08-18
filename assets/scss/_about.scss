@@ -1,0 +1,128 @@
+// =============================================
+// About Section — Two-column image + content
+// =============================================
+
+.about-section {
+  background:linear-gradient(85.07deg, #101010 7.14%, #000000 86.66%);
+  color: $color-white;
+  padding: $section-padding-y 0;
+
+  @media (max-width: $bp-md) {
+    padding: $section-padding-y-sm 0;
+  }
+
+  // Two-column grid — swap column order with --media-left
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  &__col {
+    min-width: 0;
+
+    &--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @media (max-width: $bp-lg) {
+        order: 2;
+      }
+
+      .section-heading-block .section-title {
+        margin-bottom: 24px;
+      }
+    }
+
+    &--media {
+      @media (max-width: $bp-lg) {
+        order: 1;
+      }
+    }
+  }
+
+  &__desc {
+    font-size: $fs-body-lg;
+    line-height: $lh-relaxed;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 32px;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px;
+    @include type-btn;
+    background: transparent;
+    color: $color-white;
+    border: 2px solid $color-white;
+    transition: all $transition-base;
+    width: fit-content;
+
+    &:hover {
+      background: $color-white;
+      color: $color-black;
+    }
+  }
+
+  // Image column with offset white frame (Figma)
+  &__media {
+    position: relative;
+    padding: 0 24px 24px 0;
+
+    @media (max-width: $bp-sm) {
+      padding: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: -24px;
+      right:48px;
+      bottom: 0;
+      border: 1px solid $color-white;
+      z-index: 0;
+      pointer-events: none;
+
+      @media (max-width: $bp-sm) {
+        display: none;
+      }
+    }
+  }
+
+  &__media-inner {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: $color-black;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  // Modifier: image on the left, content on the right (desktop)
+  &--media-left {
+    @media (min-width: $bp-lg) {
+      .about-section__col--content {
+        order: 2;
+      }
+
+      .about-section__col--media {
+        order: 1;
+      }
+    }
+  }
+}

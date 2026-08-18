@@ -1,0 +1,298 @@
+// =============================================
+// Looks We Love Section
+// =============================================
+
+.looks-we-love-section {
+  background: $color-black;
+  color: $color-white;
+  padding: 100px 0;
+  overflow: hidden;
+  .container{
+    max-width: 1670px;
+    margin: 0 auto;
+  }
+  @media (max-width: $bp-md) {
+    padding: 50px 0;
+  }
+
+  .looks-we-love-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  // Left — static editorial copy
+  .looks-we-love-content {
+    padding-right: 20px;
+    min-width: 0;
+
+    @media (max-width: $bp-lg) {
+      padding-right: 0;
+      order: 2;
+    }
+
+    .section-title {
+      transition: opacity $transition-base;
+    }
+
+    .looks-we-love-desc {
+      font-size: $fs-body-lg;
+      color: #FFF;
+      margin-bottom: 36px;
+      transition: opacity $transition-base;
+      @media (max-width: $bp-md) {
+        margin-bottom: 24px;
+      }
+    }
+
+    .looks-we-love-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      @include type-btn;
+      color: $color-white;
+      background: transparent;
+      border: 1px solid $color-white;
+      transition: all $transition-base;
+
+      &:hover {
+        background: $color-white;
+        color: $color-black;
+      }
+    }
+  }
+
+  // Right — product slider column
+  .looks-we-love-product-col {
+    min-width: 0;
+
+    @media (max-width: $bp-lg) {
+      order: 1;
+    }
+  }
+
+  .looks-we-love-slider {
+    overflow: hidden;
+
+    .swiper-slide {
+      height: auto;
+      padding-bottom: 20px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .looks-we-love-card {
+    background: $color-white;
+    color: $color-black;
+    position: relative;
+    max-width: 418px;
+    margin: 0 auto;
+  }
+
+  .looks-we-love-card__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 5;
+    @include type-badge;
+    padding: 5px 10px;
+    background: $color-sale-red;
+    color: $color-white;
+  }
+
+  .looks-we-love-gallery {
+    display: flex;
+    gap: 10px;
+    padding: 16px 16px 0;
+    align-items: stretch;
+
+    &:before{
+      content: '';
+      position: absolute;
+      top:20px;
+      left:-20px;
+      width: 100%;
+      height: 100%;
+      background:#DADADA;
+      z-index:-1;
+      @media(max-width:575px){
+        display:none;
+      }
+    }
+  }
+
+  .looks-we-love-gallery__thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 72px;
+    flex-shrink: 0;
+    position: absolute;
+    z-index: 1;
+    top: 48px;
+    left: 25px;
+  }
+
+  .looks-we-love-gallery__thumb {
+    width: 52px;
+    height: 76px;
+    padding: 0;
+    border: 1px solid transparent;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all $transition-base;
+
+    @media (max-width: $bp-sm) {
+      width: 64px;
+      height: 64px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &.active,
+    &:hover {
+      opacity: 1;
+      border-color: $color-black;
+    }
+  }
+
+  .looks-we-love-gallery__main {
+    flex: 1 1 0;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    background: #f5f5f5;
+    height:540px;
+  }
+
+  .looks-we-love-gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .looks-we-love-gallery__cart {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    background: $color-white;
+    border: none;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $transition-base;
+    padding: 0;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      color: $color-black;
+    }
+
+    &:hover {
+      background: $color-black;
+
+      svg {
+        color: $color-white;
+      }
+    }
+  }
+
+  .looks-we-love-card__info {
+    padding: 20px 16px 24px;
+    text-align: center;
+  }
+
+  .looks-we-love-card__name {
+    @include type-product-name;
+    margin-bottom: 10px;
+    font-size: $fs-body-lg;
+  }
+
+  .looks-we-love-card__price {
+    font-family: $font-sans;
+    font-size: $fs-body;
+    margin-bottom: 0;
+
+    .price-current {
+      font-weight: $fw-semibold;
+      color: $color-sale-red;
+    }
+
+    .price-original {
+      font-size: $fs-body;
+      font-weight: $fw-regular;
+      color: $color-gray-light;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+  }
+
+  // Nav — below product card, right-aligned
+  .looks-we-love-nav {
+    display: flex;
+    gap: 10px;
+    max-width: 350px;
+    margin: 15px auto 0;
+    justify-content: center;
+  }
+
+  .looks-we-love-nav__btn {
+    width:80px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    svg {
+      color: $color-white;
+      path{
+        transition: fill $transition-base;
+      }
+    }
+
+    &:hover {
+      background: $color-white;
+      border-color: $color-white;
+
+      svg {
+        color: $color-black;
+        path{
+          fill:#000;
+        }
+      }
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+}

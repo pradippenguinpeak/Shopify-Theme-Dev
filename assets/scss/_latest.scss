@@ -1,0 +1,158 @@
+// =============================================
+
+// Latest Arrivals Section
+
+// =============================================
+
+
+
+.latest-section {
+
+  padding: 80px 0;
+
+  background: $color-white;
+
+
+
+  @media (max-width: $bp-md) {
+
+    padding: 50px 0;
+
+  }
+
+
+
+  .latest-slider {
+
+    position: relative;
+
+  }
+
+
+
+  .latest-card {
+
+    border: 1px solid #eeeeee;
+
+  }
+
+
+
+  .latest-slider__footer {
+
+    margin-top: 30px;
+
+  }
+
+
+
+  .latest-slider__scrollbar {
+
+    height: 2px;
+
+    background: #eeeeee;
+
+    margin-bottom: 24px;
+
+    position: relative;
+
+
+
+    .swiper-scrollbar-drag {
+
+      background: $color-black;
+
+      height: 100%;
+
+      border-radius: 0;
+
+      cursor: grab;
+
+    }
+
+  }
+
+
+
+  .latest-slider__nav {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+
+
+    @media (max-width: $bp-sm) {
+
+      margin-top: 16px;
+
+    }
+
+
+
+    .swiper-button-prev,
+
+    .swiper-button-next {
+
+      position: static;
+
+      width:80px;
+
+      height:40px;
+
+      margin: 0;
+
+      background: $color-black;
+
+      border-radius: 0;
+
+      border: none;
+
+
+
+      &::after {
+        font-size: 0;
+        font-weight: $fw-bold;
+        color: $color-white;
+        width: 40px;
+        height: 12px;
+        background-image:url(../images/long-arrow.svg);
+        background-repeat:no-repeat;
+
+      }
+
+      &:hover {
+
+        background: $color-gray-dark;
+
+      }
+
+
+
+      &.swiper-button-disabled {
+
+        opacity: 0.35;
+
+      }
+
+    }
+
+
+
+    .swiper-button-prev {
+
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+      &:after{
+        transform: rotate(180deg);
+      }
+
+    }
+
+  }
+
+}
+
+

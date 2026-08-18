@@ -1,0 +1,193 @@
+// =============================================
+// Blog / Our Closet Story Section
+// =============================================
+
+.blog-section {
+  padding: 100px 0;
+  background: $color-white;
+
+  @media (max-width: $bp-md) {
+    padding: 50px 0;
+  }
+
+  // Header — uses global .section-header classes
+}
+
+// Blog card
+.blog-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .blog-card__image {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    margin-bottom: 16px;
+    background: $color-beige;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.03);
+    }
+  }
+
+  .blog-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+
+    span {
+      font-family: $font-sans;
+      font-size: $fs-micro;
+      font-weight: $fw-regular;
+      color: $color-gray-dark;
+      background: #f0f0f0;
+      padding: 4px 10px;
+      line-height: 1.2;
+    }
+  }
+
+  .blog-card__meta {
+    font-family: $font-sans;
+    font-size: $fs-caption;
+    color: $color-gray-dark;
+    margin-bottom: 12px;
+    line-height: $lh-normal;
+
+    strong {
+      color: $color-accent-red;
+      font-weight: $fw-semibold;
+    }
+  }
+
+  .blog-card__title {
+    font-family: $font-sans;
+    font-size: $fs-h6;
+    font-weight: $fw-semibold;
+    line-height: $lh-snug;
+    color: $color-black;
+    margin-bottom: 12px;
+
+    a {
+      color: inherit;
+      transition: opacity $transition-base;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .blog-card__excerpt {
+    font-family: $font-sans;
+    font-size: $fs-body;
+    color: $color-gray;
+    margin-bottom: 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-card__link {
+    font-family: $font-sans;
+    font-size: $fs-caption;
+    font-weight: $fw-semibold;
+    text-transform: uppercase;
+    letter-spacing: $ls-wide;
+    color: $color-black;
+    border-bottom: 2px solid $color-black;
+    padding-bottom: 2px;
+    display: inline-block;
+    width: fit-content;
+    transition: opacity $transition-base;
+
+    &:hover {
+      opacity: 0.6;
+      color: $color-black;
+    }
+  }
+}
+
+// Social / Instagram Feed
+.social-section {
+  padding: $section-padding-y 0;
+  background: $color-cream;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $bp-md) {
+    padding: $section-padding-y-sm 0;
+  }
+
+  .container {
+    margin-bottom: 40px;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    @media (max-width: $bp-xl) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .social-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .social-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity $transition-base;
+
+      svg {
+        width: 28px;
+        height: 28px;
+        color: $color-white;
+      }
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.08);
+      }
+
+      .social-item__overlay {
+        opacity: 1;
+      }
+    }
+  }
+}

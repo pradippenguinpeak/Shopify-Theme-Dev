@@ -1,0 +1,117 @@
+// =============================================
+// Clothing Theme — Main Stylesheet
+// =============================================
+
+// 1. Variables & Design Tokens
+@import 'variables';
+
+// 2. Typography System
+@import 'typography';
+
+// 3. Section Styles
+@import 'header';
+@import 'hero';
+@import 'collection';
+@import 'product-card';
+@import 'latest';
+@import 'product';
+@import 'banner';
+@import 'about';
+@import 'looks-we-love';
+@import 'categories';
+@import 'shop-by-product';
+@import 'lookbook';
+@import 'blog';
+@import 'info';
+@import 'newsletter';
+@import 'footer';
+@import 'animations';
+@import 'logos-slides';
+
+// =============================================
+// Global Utilities & Base Overrides
+// =============================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container-theme {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+// Section spacing utility
+.section-padding {
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
+
+  @media (max-width: $bp-md) {
+    padding-top: $section-padding-y-sm;
+    padding-bottom: $section-padding-y-sm;
+  }
+}
+
+// Swiper overrides
+.swiper {
+  overflow: hidden;
+}
+
+// Bootstrap typography override (Figma scale)
+h1, .h1 { font-size: $fs-h1; }
+h2, .h2 { font-size: $fs-h2; }
+h3, .h3 { font-size: $fs-h3; }
+h4, .h4 { font-size: $fs-h4; }
+h5, .h5 { font-size: $fs-h5; }
+h6, .h6 { font-size: $fs-h6; }
+
+// Bootstrap container override
+.container {
+  max-width: $container-max;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  @media(max-width:1199px){
+    padding:0 20px
+  }
+  @media(max-width:480px){
+    padding:0 16px
+  }
+}
+
+// Selection color
+::selection {
+  background: $color-black;
+  color: $color-white;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-gray-muted;
+  border-radius: 4px;
+
+  &:hover {
+    background: $color-gray;
+  }
+}

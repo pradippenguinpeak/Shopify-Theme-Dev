@@ -1,0 +1,245 @@
+// =============================================
+// Promotional Banner Section
+// =============================================
+
+.promo-banner {
+  position: relative;
+  overflow: hidden;
+
+  &--dark {
+    background: $color-black;
+    color: $color-white;
+  }
+
+  &--light {
+    background: $color-cream;
+  }
+
+  .promo-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+
+  .promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+
+    @media (max-width: $bp-lg) {
+      padding: 50px 30px;
+      order: 2;
+    }
+
+    // Heading uses global .section-heading-block classes
+
+    .promo-desc {
+      font-size: $fs-body;
+      line-height: $lh-relaxed;
+      margin-bottom: 32px;
+      max-width: 420px;
+      opacity: 0.85;
+    }
+
+    .promo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px;
+      @include type-btn;
+      border: 2px solid;
+      transition: all $transition-base;
+      width: fit-content;
+    }
+  }
+
+  &--dark .promo-content {
+    .promo-desc {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .promo-btn {
+      background: $color-white;
+      color: $color-black;
+      border-color: $color-white;
+
+      &:hover {
+        background: transparent;
+        color: $color-white;
+      }
+    }
+  }
+
+  &--light .promo-content {
+    .promo-btn {
+      background: $color-black;
+      color: $color-white;
+      border-color: $color-black;
+
+      &:hover {
+        background: transparent;
+        color: $color-black;
+      }
+    }
+  }
+
+  .promo-image {
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: $bp-lg) {
+      order: 1;
+      min-height: 350px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.03);
+    }
+  }
+
+  // Full-width overlay banner
+  &--overlay {
+    position: relative;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: $bp-md) {
+      min-height: 380px;
+    }
+
+    @media (max-width: $bp-sm) {
+      min-height: 320px;
+    }
+
+    .promo-bg {
+      position: absolute;
+      inset: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .promo-content {
+      position: relative;
+      z-index: $z-overlay;
+      text-align: center;
+      align-items: center;
+      padding: 60px 30px;
+
+      @media (max-width: $bp-sm) {
+        padding: 40px 20px;
+      }
+
+      .section-subtitle,
+      .section-title,
+      .promo-desc {
+        color: $color-white;
+        text-align: center;
+      }
+
+      .promo-desc {
+        max-width: 500px;
+      }
+
+      .promo-btn {
+        background: $color-white;
+        color: $color-black;
+        border-color: $color-white;
+
+        &:hover {
+          background: transparent;
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+// Split dual banner
+.dual-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+
+  .dual-banner__item {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .dual-banner__content {
+      position: relative;
+      z-index: $z-overlay;
+      padding: 40px;
+      color: $color-white;
+
+      h3 {
+        font-family: $font-serif;
+        font-size: $fs-h3;
+        color: $color-white;
+        margin-bottom: 8px;
+      }
+
+      a {
+        @extend .btn-text;
+        color: $color-white;
+        border-bottom: 1px solid $color-white;
+        padding-bottom: 2px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

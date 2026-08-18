@@ -1,0 +1,304 @@
+// =============================================
+// Hero / Banner Slider Section
+// =============================================
+
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .hero-slider__main {
+    min-height: 600px;
+
+    @media (max-width: $bp-md) {
+      min-height: 500px;
+    }
+  }
+
+  .hero-slide {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    min-height: 600px;
+    background: $color-cream;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    text-align: center;
+
+    @media (max-width: $bp-lg) {
+      padding: 40px 30px;
+      order: 2;
+    }
+
+    @media (max-width: $bp-sm) {
+      padding: 32px 20px;
+    }
+
+    .hero-subtitle {
+      @include type-section-label;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      @include type-hero-title;
+      color: $color-black;
+      margin-bottom: 24px;
+    }
+
+  }
+
+  .hero-images {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 8px;
+    padding: 8px 8px 8px 0;
+
+    @media (max-width: $bp-lg) {
+      order: 1;
+      padding: 8px;
+      min-height: 400px;
+    }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+      min-height: 320px;
+
+      .hero-img-side {
+        display: none;
+      }
+    }
+
+    .hero-img-main {
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+    }
+
+    .hero-img-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .hero-img-small {
+        flex: 1;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
+        }
+      }
+    }
+
+    &:hover img {
+      transform: scale(1.03);
+    }
+  }
+
+  .hero-ticker-column {
+    display: flex;
+    gap: 0;
+    min-height: 600px;
+    max-height:100vh;
+    padding:0;
+
+    @media (max-width: $bp-lg) {
+      min-height: 360px;
+      flex-direction: row;
+      height: auto;
+    }
+  }
+
+  .hero-ticker {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: $color-cream;
+    padding:0;
+    &:hover .hero-ticker__track {
+      animation-play-state: paused;
+    }
+  }
+
+  .hero-ticker__track {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 30s;
+  }
+
+  .hero-ticker--top .hero-ticker__track {
+    animation-name: heroTickerTopToBottom;
+  }
+
+  .hero-ticker--bottom .hero-ticker__track {
+    animation-name: heroTickerBottomToTop;
+  }
+
+  .hero-ticker__group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ticker__card {
+    margin: 0;
+    overflow: hidden;
+    background: $color-white;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  // Full-width image slide variant
+  .hero-slide--full {
+    grid-template-columns: 1fr;
+    position: relative;
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: $color-overlay;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: $z-overlay;
+      color: $color-white;
+      padding: 80px;
+      max-width: 600px;
+
+      .hero-title {
+        color: $color-white;
+      }
+
+      .hero-desc {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .hero-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+        text-align: left;
+      }
+
+      .hero-btn {
+        background: $color-white;
+        color: $color-black;
+        border-color: $color-white;
+
+        &:hover {
+          background: transparent;
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  // Swiper controls
+  .swiper-pagination {
+    bottom: 30px !important;
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: $color-gray-muted;
+      opacity: 1;
+      transition: all $transition-base;
+
+      &-active {
+        background: $color-black;
+        width: 30px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 48px;
+    height: 48px;
+    background: $color-white;
+    border-radius: $radius-full;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: $bp-sm) {
+      width: 36px;
+      height: 36px;
+
+      &::after {
+        font-size: 12px !important;
+      }
+    }
+
+    &::after {
+      font-size: 16px;
+      font-weight: $fw-bold;
+      color: $color-black;
+    }
+
+    &:hover {
+      background: $color-black;
+
+      &::after {
+        color: $color-white;
+      }
+    }
+  }
+}
+
+@keyframes heroTickerTopToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes heroTickerBottomToTop {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
