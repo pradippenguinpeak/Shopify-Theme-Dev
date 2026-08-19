@@ -12,14 +12,13 @@
 
 .logo-ticker {
     display: flex;
-    animation: scroll 30s linear infinite;
     gap: 40px;
     width: fit-content;
+    will-change: transform;
 }
 
-.logo-ticker:hover {
-    animation-play-state: paused;
-}
+/* JS will drive transform for smooth speed control; hovering still pauses via pointer events */
+.logo-ticker:hover { pointer-events: auto; }
 
 .logo-item {
     display: flex;
@@ -36,14 +35,7 @@
     object-fit: contain;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
+/* animation handled in JS for smooth control */
 
 /* Responsive */
 @media (max-width: 768px) {

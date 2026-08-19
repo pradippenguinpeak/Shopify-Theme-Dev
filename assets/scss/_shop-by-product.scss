@@ -3,12 +3,8 @@
 // =============================================
 
 .shop-by-product-section {
-  padding: 100px 0;
+  padding-block: clamp(50px, 5.208vw, 100px);
   background: $color-white;
-
-  @media (max-width: $bp-md) {
-    padding: 50px 0;
-  }
 
   .shop-by-product__layout {
     display: grid;
@@ -28,6 +24,9 @@
     top: 100px;
     padding: 40px;
     background: #f9f9f9;
+    @media(max-width:1439px){
+      padding: 25px;
+    }
     @media (max-width:1199px){
       padding: 20px;
     }
@@ -210,8 +209,10 @@
       }
     }
     &:last-child{
-      margin-bottom:0;
-      padding-bottom: 0;
+      @media(max-width:575px){
+        margin-bottom:0;
+        padding-bottom: 0;
+      }
     }
     .latest-card__image {
       aspect-ratio:inherit;

@@ -9,7 +9,6 @@
   padding: 10px 20px;
   font-size: clamp(12px, 0.833vw, 16px);
   font-weight: $fw-regular;
-  letter-spacing: $ls-wide;
 
   @media (max-width: 991px) {
     padding: 8px 12px;
@@ -34,7 +33,6 @@
 
 .site-header {
   background-color: $color-white;
-  border-bottom: 1px solid $color-border;
   position: sticky;
   top: 0;
   z-index: $z-header;
@@ -48,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 18px 0;
     position: relative;
 
     @media (max-width: $bp-sm) {
@@ -98,8 +96,8 @@
           position: absolute;
           top: 6px;
           right: -15px;
-          width: 8px;
-          height: 8px;
+          width:7px;
+          height:7px;
           border-right: 2px solid #1a1a1a;
           border-bottom: 2px solid #1a1a1a;
           transform: rotate(45deg);
@@ -123,7 +121,7 @@
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     @media (max-width: 991px) {
       gap: 10px;
     }
@@ -146,8 +144,8 @@
       }
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 24px;
       }
 
       .cart-count {

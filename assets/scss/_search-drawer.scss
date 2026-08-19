@@ -1,0 +1,90 @@
+// =============================================
+// Search Drawer (matches Cart Drawer styles)
+// =============================================
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: $z-modal - 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-base, visibility $transition-base;
+}
+.search-overlay.is-open { opacity: 1; visibility: visible; }
+
+.search-drawer {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 450px;
+  height: 100vh;
+  background: $color-white;
+  z-index: $z-modal;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.12);
+  transition: right $transition-base;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+
+  &__header {
+    border-bottom: 3px solid #000;
+    padding-bottom: 12px;
+    h3 { font-size: 22px; margin: 0 0 8px; font-weight: 500; }
+    .short-desc { font-size: 14px; margin-bottom: 8px; }
+  }
+
+  &__input { margin-bottom: 10px; }
+  &__input input[type="search"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    font-size: $fs-body-sm;
+    background: $color-white;
+  }
+
+  &__close { @extend .cart-drawer__close; }
+}
+.search-drawer.is-open { right: 0; }
+
+.search-drawer__body {
+  padding: 18px 0 0;
+  overflow: auto;
+  flex: 1;
+}
+
+.search-suggestions h5,
+.search-pages h5,
+.search-results-section h5 {
+  margin: 0 0 8px;
+  font-size: $fs-body-sm;
+  text-transform: uppercase;
+}
+
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  border: 1px solid #f3f3f3;
+  border-radius: 6px;
+  overflow: hidden;
+  background: $color-white;
+}
+.suggestions-list li { padding: 10px 12px; border-bottom: 1px solid #f1f1f1; cursor: pointer; }
+.suggestions-list li:last-child { border-bottom: 0; }
+.suggestions-list li:hover { background: $color-cream; }
+
+.pages-list { list-style: none; padding: 0; margin: 0 0 14px; }
+.pages-list li { padding: 8px 0; border-bottom: 1px solid #f1f1f1; }
+
+.search-results { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 12px; }
+.search-results .latest-card { min-width: 150px; flex: 0 0 auto; background: $color-white; border: 1px solid #f1f1f1; border-radius: 6px; padding: 8px; }
+.search-results .latest-card .latest-card__image img { width: 100%; height: 120px; object-fit: cover; border-radius: 4px; }
+
+.search-footer { margin-top: 12px; }
+
+@media (max-width: $bp-md) {
+  .search-drawer { width: 100%; right: -100%; }
+  .search-drawer.is-open { right: 0; }
+}

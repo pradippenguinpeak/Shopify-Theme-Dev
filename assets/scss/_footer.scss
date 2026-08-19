@@ -8,7 +8,7 @@
 
   // Newsletter tier
   .footer-newsletter {
-    padding: 60px 0;
+    padding: 75px 0px 33px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     @media (max-width: $bp-lg) {
@@ -296,7 +296,8 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 12px center;
-        min-width: 160px;
+        min-width: 149px;
+        outline:none;
         @media(max-width:575px){
           min-width: 140px;
           padding: 6px 25px 6px 12px;
@@ -375,3 +376,34 @@
     }
   }
 }
+
+.modal {
+  .modal-dialog{
+    width:100%;
+    max-width:1530px;
+  }
+  .product-section{
+    padding:0;
+    .large-product-images{
+      padding:0 15px;
+    }
+    .large-product-content{
+      padding:0 15px;
+    }
+    .product-gallery__thumbs{
+      height:675px;
+      width:111px;
+      .swiper-slide{
+        width:100%;
+      }
+    }
+    .product-gallery__main{
+      .swiper-slide{
+        img{
+          max-height:654px;
+        }
+      }
+    }
+  }
+}
+

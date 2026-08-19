@@ -2,6 +2,11 @@
 // Shared Product Card (Latest + Shop By Products)
 // =============================================
 
+.latest-section{
+  .swiper-slide{
+    height:auto;
+  }
+}
 .latest-card {
   background: $color-white;
   height: 100%;
@@ -141,7 +146,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding:30px;
+    padding:25px;
     transition: all $transition-base;
   }
 
@@ -149,15 +154,13 @@
     @include type-product-name;
     font-size:$fs-body-lg;
     color:#6b6b6b;
-    margin-bottom:15px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    margin-bottom:10px;
+    padding-bottom:4px;
     overflow: hidden;
-    width: 100%;
     letter-spacing: 0;
     display:inline-block;
     width:auto;
+    position: relative;
     &:after{
       content: "";
       display: block;
@@ -166,6 +169,9 @@
       background: #000;
       margin: 5px 0 0;
       transition:0.5s all;
+      position: absolute;
+      left:0;
+      bottom:0;
     }
   }
 

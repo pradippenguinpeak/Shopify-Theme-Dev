@@ -3,14 +3,8 @@
 // =============================================
 
 .blog-section {
-  padding: 100px 0;
+  padding-block: clamp(50px, 5.208vw, 100px);
   background: $color-white;
-
-  @media (max-width: $bp-md) {
-    padding: 50px 0;
-  }
-
-  // Header — uses global .section-header classes
 }
 
 // Blog card
@@ -120,7 +114,7 @@
 
 // Social / Instagram Feed
 .social-section {
-  padding: $section-padding-y 0;
+  padding-block: clamp(50px, 5.208vw, 100px);
   background: $color-cream;
   position: relative;
   overflow: hidden;

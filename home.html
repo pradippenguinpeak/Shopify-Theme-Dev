@@ -18,6 +18,12 @@
 
   <!-- Theme Styles -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    /* Keep search drawer hidden by default until SCSS is compiled/loaded */
+    #searchOverlay{display:none;opacity:0;visibility:hidden !important}
+    #searchDrawer{right:-100% !important; visibility:hidden}
+    #searchDrawer.is-open{right:0 !important; visibility:visible}
+  </style>
 </head>
 <body>
 
@@ -244,7 +250,7 @@
             </div>
           </li>
           <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="#">Blogs</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
 
@@ -382,7 +388,59 @@
       </div>
 
     </div>
+     
     <div class="cart-drawer__footer">
+
+       <!-- Today's Deal inside cart drawer -->
+      <div class="cart-deals" aria-label="Today's deals">
+        <h4 class="cart-deals__title">Today's Deal!</h4>
+        <div class="cart-deals__swiper swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="deal-card">
+                <div class="deal-card__media">
+                  <img src="assets/images/01.png" alt="Floral Print Chiffon B">
+                </div>
+                <div class="deal-card__info">
+                  <h5 class="deal-card__name">Floral Print Chiffon B</h5>
+                  <p class="deal-card__price"><span class="current">Rs. 2,499.00</span> <span class="original">Rs. 3,499.00</span></p>
+                  <div class="deal-card__controls">
+                    <select class="deal-size-select" aria-label="Select size">
+                      <option>S</option>
+                      <option>M</option>
+                      <option>L</option>
+                    </select>
+                    <button class="default-btn deal-add">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="deal-card">
+                <div class="deal-card__media">
+                  <img src="assets/images/02.png" alt="Classic Linen Blazer">
+                </div>
+                <div class="deal-card__info">
+                  <h5 class="deal-card__name">Classic Linen Blazer</h5>
+                  <p class="deal-card__price"><span class="current">Rs. 2,499.00</span> <span class="original">Rs. 3,499.00</span></p>
+                  <div class="deal-card__controls">
+                    <select class="deal-size-select" aria-label="Select size">
+                      <option>S</option>
+                      <option>M</option>
+                      <option>L</option>
+                    </select>
+                    <button class="default-btn deal-add">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-prev cart-deals-prev"></div>
+          <div class="swiper-button-next cart-deals-next"></div>
+        </div>
+      </div>
+
       <div class="total-text">
         <div class="d-flex justify-content-between align-items-center mb-1">
           <strong>Estimated Total</strong>
@@ -405,6 +463,47 @@
     </div>
   </aside>
 
+  <!-- Search drawer + overlay (opens from header search icon) -->
+  <div class="search-overlay" id="searchOverlay"></div>
+  <aside class="search-drawer" id="searchDrawer" aria-hidden="true">
+    <div class="search-drawer__header">
+      <div class="d-flex align-items-center justify-content-between">
+        <h3>Search your store...</h3>
+        <button class="search-drawer__close" id="searchClose" aria-label="Close search">×</button>
+      </div>
+      <div class="search-drawer__input">
+        <label for="searchInput" class="visually-hidden">Search</label>
+        <input id="searchInput" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+      </div>
+    </div>
+    <div class="search-drawer__body">
+      <div class="search-suggestions">
+        <h5>SUGGESTIONS</h5>
+        <ul id="searchSuggestions" class="suggestions-list">
+          <!-- suggestions populated by JS -->
+        </ul>
+      </div>
+
+      <div class="search-pages">
+        <h5>PAGES</h5>
+        <ul class="pages-list">
+          <li><a href="#">Your Privacy Choices</a></li>
+        </ul>
+      </div>
+
+      <div class="search-results-section">
+        <h5>PRODUCTS</h5>
+        <div id="searchResults" class="search-results">
+          <!-- product results populated by JS -->
+        </div>
+      </div>
+
+      <div class="search-footer">
+        <a href="#" class="default-btn outline">View all results</a>
+      </div>
+    </div>
+  </aside>
+
   <main>
 
     <!-- ========== Hero Slider ========== -->
@@ -412,10 +511,10 @@
       <div class="hero-slider__main">
         <div class="hero-slide">
           <div class="hero-content">
-            <p class="hero-subtitle">New Collection 2026</p>
+            <p class="hero-subtitle">Top Collection</p>
             <h1 class="hero-title">Latest Designs</h1>
             <div class="inline-btns">
-              <a href="#" class="default-btn">Shop Now</a>
+              <a href="#" class="default-btn">Shop now</a>
               <a href="#" class="default-btn outline">View collection</a>
             </div>
           </div>
@@ -745,7 +844,13 @@
                       <div class="looks-we-love-gallery__main">
                         <img class="looks-we-love-gallery__image" src="assets/images/02-1.png" alt="Black Button-Front A-Line Mini Skirt">
                         <button type="button" class="looks-we-love-gallery__cart" aria-label="Add to cart">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_977_1665)">
+                              <path d="M4.36284 0.848145L1.69666 4.24146V16.1181C1.69666 16.568 1.88392 16.9996 2.21721 17.3178C2.5506 17.636 3.00269 17.8147 3.47411 17.8147H15.9163C16.3877 17.8147 16.8398 17.636 17.1731 17.3178C17.5065 16.9996 17.6938 16.568 17.6938 16.1181V4.24146L15.0276 0.848145H4.36284Z" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M1.69666 4.24146H17.6938" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M13.2501 7.63477C13.2501 8.53476 12.8755 9.39785 12.2089 10.0342C11.5422 10.6706 10.6379 11.0281 9.69518 11.0281C8.75234 11.0281 7.84813 10.6706 7.18146 10.0342C6.51479 9.39785 6.14026 8.53476 6.14026 7.63477" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                          </svg>
                         </button>
                       </div>
                     </div>
@@ -781,7 +886,13 @@
                       <div class="looks-we-love-gallery__main">
                         <img class="looks-we-love-gallery__image" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700&q=80" alt="Oversized Linen Blazer">
                         <button type="button" class="looks-we-love-gallery__cart" aria-label="Add to cart">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_977_1665)">
+                              <path d="M4.36284 0.848145L1.69666 4.24146V16.1181C1.69666 16.568 1.88392 16.9996 2.21721 17.3178C2.5506 17.636 3.00269 17.8147 3.47411 17.8147H15.9163C16.3877 17.8147 16.8398 17.636 17.1731 17.3178C17.5065 16.9996 17.6938 16.568 17.6938 16.1181V4.24146L15.0276 0.848145H4.36284Z" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M1.69666 4.24146H17.6938" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M13.2501 7.63477C13.2501 8.53476 12.8755 9.39785 12.2089 10.0342C11.5422 10.6706 10.6379 11.0281 9.69518 11.0281C8.75234 11.0281 7.84813 10.6706 7.18146 10.0342C6.51479 9.39785 6.14026 8.53476 6.14026 7.63477" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                          </svg>
                         </button>
                       </div>
                     </div>
@@ -817,7 +928,13 @@
                       <div class="looks-we-love-gallery__main">
                         <img class="looks-we-love-gallery__image" src="assets/images/02-1.jpg" alt="High-Waist Wide Leg Trousers">
                         <button type="button" class="looks-we-love-gallery__cart" aria-label="Add to cart">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_977_1665)">
+                              <path d="M4.36284 0.848145L1.69666 4.24146V16.1181C1.69666 16.568 1.88392 16.9996 2.21721 17.3178C2.5506 17.636 3.00269 17.8147 3.47411 17.8147H15.9163C16.3877 17.8147 16.8398 17.636 17.1731 17.3178C17.5065 16.9996 17.6938 16.568 17.6938 16.1181V4.24146L15.0276 0.848145H4.36284Z" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M1.69666 4.24146H17.6938" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M13.2501 7.63477C13.2501 8.53476 12.8755 9.39785 12.2089 10.0342C11.5422 10.6706 10.6379 11.0281 9.69518 11.0281C8.75234 11.0281 7.84813 10.6706 7.18146 10.0342C6.51479 9.39785 6.14026 8.53476 6.14026 7.63477" stroke="black" stroke-width="1.2725" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                          </svg>
                         </button>
                       </div>
                     </div>
@@ -961,7 +1078,11 @@
                       <p class="category-card__count">99 Items</p>
                     </div>
                     <span class="category-card__arrow">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                      <svg width="9" height="22" viewBox="0 0 9 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_977_1910)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.31784 2.48825C0.741626 2.06446 1.42872 2.06446 1.85251 2.48825L8.36355 8.99929C8.78733 9.42308 8.78733 10.1102 8.36355 10.534L1.85251 17.045C1.42872 17.4688 0.741626 17.4688 0.31784 17.045C-0.105947 16.6212 -0.105947 15.9341 0.31784 15.5103L6.06155 9.76662L0.31784 4.02292C-0.105947 3.59913 -0.105947 2.91204 0.31784 2.48825Z" fill="black"/>
+                        </g>
+                      </svg>
                     </span>
                   </div>
                 </a>
@@ -978,7 +1099,11 @@
                       <p class="category-card__count">100 Items</p>
                     </div>
                     <span class="category-card__arrow">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                      <svg width="9" height="22" viewBox="0 0 9 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_977_1910)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.31784 2.48825C0.741626 2.06446 1.42872 2.06446 1.85251 2.48825L8.36355 8.99929C8.78733 9.42308 8.78733 10.1102 8.36355 10.534L1.85251 17.045C1.42872 17.4688 0.741626 17.4688 0.31784 17.045C-0.105947 16.6212 -0.105947 15.9341 0.31784 15.5103L6.06155 9.76662L0.31784 4.02292C-0.105947 3.59913 -0.105947 2.91204 0.31784 2.48825Z" fill="black"/>
+                        </g>
+                      </svg>
                     </span>
                   </div>
                 </a>
@@ -995,7 +1120,11 @@
                       <p class="category-card__count">150 Items</p>
                     </div>
                     <span class="category-card__arrow">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                      <svg width="9" height="22" viewBox="0 0 9 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_977_1910)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.31784 2.48825C0.741626 2.06446 1.42872 2.06446 1.85251 2.48825L8.36355 8.99929C8.78733 9.42308 8.78733 10.1102 8.36355 10.534L1.85251 17.045C1.42872 17.4688 0.741626 17.4688 0.31784 17.045C-0.105947 16.6212 -0.105947 15.9341 0.31784 15.5103L6.06155 9.76662L0.31784 4.02292C-0.105947 3.59913 -0.105947 2.91204 0.31784 2.48825Z" fill="black"/>
+                        </g>
+                      </svg>
                     </span>
                   </div>
                 </a>
@@ -1012,7 +1141,11 @@
                       <p class="category-card__count">248 Items</p>
                     </div>
                     <span class="category-card__arrow">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                      <svg width="9" height="22" viewBox="0 0 9 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_977_1910)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.31784 2.48825C0.741626 2.06446 1.42872 2.06446 1.85251 2.48825L8.36355 8.99929C8.78733 9.42308 8.78733 10.1102 8.36355 10.534L1.85251 17.045C1.42872 17.4688 0.741626 17.4688 0.31784 17.045C-0.105947 16.6212 -0.105947 15.9341 0.31784 15.5103L6.06155 9.76662L0.31784 4.02292C-0.105947 3.59913 -0.105947 2.91204 0.31784 2.48825Z" fill="black"/>
+                        </g>
+                      </svg>
                     </span>
                   </div>
                 </a>
@@ -1791,7 +1924,7 @@
           <div class="footer-selectors">
             <select aria-label="Country and currency">
               <option>United state (USD $)</option>
-              <option>United Kingdom (GBP £)</option>
+              <option>UK (GBP £)</option>
               <option>India (INR ₹)</option>
               <option>Canada (CAD $)</option>
             </select>
@@ -1822,6 +1955,176 @@
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Product quick-add Modal (Bootstrap) -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productModalLabel">Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <!-- product content popup-->
+          <div class="product-section">
+            <div class="row align-items-start">
+
+              <!-- Gallery -->
+              <div class="col-lg-7 large-product-images" data-animate="fade-right">
+                <div class="product-gallery">
+                  <div class="product-gallery__thumbs swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=160&q=80" alt="Red">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Orange">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=160&q=80" alt="Pink">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=160&q=80" alt="Maroon">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=160&q=80" alt="Maroon">
+                      </div>
+                    </div>
+                    <button class="swiper-button-prev product-thumb-prev" type="button"></button>
+                    <button class="swiper-button-next product-thumb-next" type="button"></button>
+                  </div>
+                  <div class="product-gallery__main swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700&q=80" alt="Classic A-Line Midi Dress - Red">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Classic A-Line Midi Dress - Orange">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80" alt="Classic A-Line Midi Dress - Pink">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=700&q=80" alt="Classic A-Line Midi Dress - Maroon">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=700&q=80" alt="Classic A-Line Midi Dress - Maroon">
+                      </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="product-gallery__featured">
+                      <span>NEW ARRIVAL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Details -->
+              <div class="col-lg-5 large-product-content" data-animate="fade-left" data-delay="2">
+                <div class="product-details">
+
+                  
+                  <h2 class="product-details__title">Classic A-Line Midi Dress</h2>
+
+                  <div class="product-details__pricing">
+                    <span class="product-discount-badge">50% off</span>
+                    <span class="product-price-original">Rs.2,500.00</span>
+                    <span class="product-price-current">Rs.1,250.00</span>
+                  </div>
+
+                  <div class="product-stock-available">
+                    <svg width="20" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.82192 19.7411C12.1345 19.7411 15.6431 16.0544 15.6431 11.5228C15.6431 8.76311 14.466 7.03646 12.6985 5.29336L10.7837 3.404L11.4032 6.0856C11.6183 7.01919 11.6746 9.87092 10.5336 11.3954C10.0557 12.0339 9.42446 12.3446 8.60408 12.3446C7.73823 12.3446 7.05076 11.6181 7.03981 10.6903C7.02886 9.7723 7.39802 9.01211 7.78907 8.20837C8.18953 7.38491 8.60408 6.53432 8.60408 5.50046C8.60408 3.2725 7.4997 1.25328 7.45277 1.16863L6.80517 0L6.11613 1.14316C5.45212 2.24358 4.5566 3.26921 3.68923 4.26116C1.87551 6.33543 0 8.48205 0 11.5236C0 16.0552 3.50856 19.7418 7.82114 19.7418L7.82192 19.7411Z" fill="#E51A1A"/>
+                    </svg>
+                    <span>Just 6 left. Order soon!</span>
+                  </div>
+
+                  <!-- Colours -->
+                  <div class="product-colours">
+                    <p class="product-option-label">Colours: <span id="selectedColour">Red</span></p>
+                    <div class="product-colour-swatches">
+                      <button class="colour-swatch active" data-colour="Red" aria-label="Red">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&q=60" alt="Red">
+                      </button>
+                      <button class="colour-swatch" data-colour="Pink" aria-label="Pink">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=100&q=60" alt="Pink">
+                      </button>
+                      <button class="colour-swatch" data-colour="Maroon" aria-label="Maroon">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=60" alt="Maroon">
+                      </button>
+                      <button class="colour-swatch" data-colour="Navy" aria-label="Navy">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=100&q=60" alt="Navy">
+                      </button>
+                      <button class="colour-swatch" data-colour="Black" aria-label="Black">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=100&q=60" alt="Black">
+                      </button>
+                      <button class="colour-swatch" data-colour="White" aria-label="White">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=100&q=60" alt="White">
+                      </button>
+                      <button class="colour-swatch" data-colour="Beige" aria-label="Beige">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=100&q=60" alt="Beige">
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Sizes -->
+                  <div class="product-sizes">
+                    <p class="product-option-label">Size: <span id="selectedSize">S</span></p>
+                    <div class="product-size-buttons">
+                      <button class="size-btn active" data-size="S">S</button>
+                      <button class="size-btn" data-size="M">M</button>
+                      <button class="size-btn" data-size="L">L</button>
+                      <button class="size-btn" data-size="XL">XL</button>
+                      <button class="size-btn" data-size="2XL">2XL</button>
+                      <button class="size-btn" data-size="3XL">3XL</button>
+                    </div>
+                  </div>
+
+                  <!-- Actions -->
+                  <div class="product-actions">
+                    <div class="product-quantity">
+                      <button type="button" class="qty-minus" aria-label="Decrease quantity">−</button>
+                      <input type="number" class="qty-input" value="1" min="1" max="6" aria-label="Quantity">
+                      <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
+                    </div>
+                    <button type="button" class="product-add-cart-btn">
+                      <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.30151 1.57227L1.30151 5.57227V19.5723C1.30151 20.1027 1.51222 20.6114 1.88724 20.9865C2.26237 21.3616 2.77107 21.5723 3.30151 21.5723H17.3015C17.8319 21.5723 18.3406 21.3616 18.7157 20.9865C19.0908 20.6114 19.3015 20.1027 19.3015 19.5723V5.57227L16.3015 1.57227H4.30151Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.30151 5.57227H19.3015" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.3015 9.57227C14.3015 10.6332 13.88 11.6506 13.1299 12.4007C12.3798 13.1509 11.3623 13.5723 10.3015 13.5723C9.24064 13.5723 8.22322 13.1509 7.47308 12.4007C6.72293 11.6506 6.30151 10.6332 6.30151 9.57227" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+
+                      Add to Cart
+                    </button>
+                  </div>
+
+                  <button type="button" class="product-full-info-btn">Full Information</button>
+
+                  <div class="product-trust">
+                    <p>Guaranteed Safe Checkout</p>
+                    <div class="payment-icons">
+                      <span class="payment-icon"><img src="assets/images/visa.png" alt="Visa"></span>
+                      <span class="payment-icon"><img src="assets/images/master.png" alt="Mastercard"></span>
+                      <span class="payment-icon"><img src="assets/images/payd.png" alt="PayPal"></span>
+                      <span class="payment-icon"><img src="assets/images/paypal.png" alt="Mastercard"></span>
+                      <span class="payment-icon"><img src="assets/images/amx.png" alt="Mastercard"></span>
+                      <span class="payment-icon"><img src="assets/images/discover.png" alt="Mastercard"></span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- product content popup-->
+
+        </div>
+       
+      </div>
+    </div>
+  </div>
 
   <!-- Theme JS -->
   <script src="assets/js/main.js"></script>

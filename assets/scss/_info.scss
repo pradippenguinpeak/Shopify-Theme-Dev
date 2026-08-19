@@ -57,19 +57,18 @@
 
 // FAQ Section
 .faq-section {
-  padding: 100px 0;
+  padding-block: clamp(50px, 5.208vw, 100px);
   background: #FAF7F0;
-
-  @media (max-width: $bp-md) {
-    padding: 50px 0;
-  }
 
   .faq-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-
+    & > :only-child{
+      grid-column: 1 / -1;
+      padding:0;
+    }
     @media (max-width: $bp-lg) {
       grid-template-columns: 1fr;
       gap: 40px;
@@ -80,7 +79,6 @@
   }
 
   .faq-content {
-    padding-right:55px;
     @media (max-width: $bp-lg) {
       order: 2;
     }
@@ -101,7 +99,7 @@
     .accordion-button {
       font-size: $fs-h6;
       font-weight: $fw-regular;
-      color: #6b6b6b;
+      color: #000;
       background: transparent;
       padding: 20px 40px 20px 0;
       box-shadow: none;
@@ -148,7 +146,7 @@
       padding: 0 40px 20px 0;
       font-family: $font-sans;
       font-size: $fs-body;
-      color: $color-gray;
+      color:#6B6B6B;
       line-height: $lh-relaxed;
     }
   }

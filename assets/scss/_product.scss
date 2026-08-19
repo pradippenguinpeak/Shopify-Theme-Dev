@@ -3,16 +3,8 @@
 // =============================================
 
 .product-section {
-  padding: 100px 0;
+  padding-block: clamp(50px, 5.208vw, 100px);
   background: #faf9f6;
-
-  @media (max-width: $bp-md) {
-    padding: 50px 0;
-  }
-
-  @media (max-width: $bp-sm) {
-    padding: 40px 0;
-  }
 
   .large-product-images{
     padding-right: 55px;
@@ -54,7 +46,6 @@
     .swiper-slide {
       width: 156px;
       height: 80px;
-      opacity: 0.5;
       cursor: pointer;
       border: 2px solid transparent;
       overflow: hidden;
@@ -67,27 +58,31 @@
       }
 
       &-thumb-active {
-        opacity: 1;
         border-color: $color-black;
+        filter: brightness(0.7);
+        padding: 3px;
       }
     }
 
     .swiper-button-prev,
     .swiper-button-next {
-        width: 50px;
-        height: 50px;
+        width: 32px;
+        height: 32px;
         margin: 0;
         left: 50%;
         transform: translateX(-50%);
         z-index: 5;
         border:solid 1px #000;
         background:transparent;
-
+        transition:0.5s all;
         &::after {
             font-size: 0;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z' fill='%23000000'/%3E%3C/svg%3E");
-            height: 20px;
-            width:20px;
+            height: 14px;
+            width:14px;
+        }
+        &:hover{
+          background:#FFF;
         }
     }
 
@@ -305,7 +300,7 @@
     @include type-badge;
     text-transform: lowercase;
     padding: 10px;
-    background: $color-black;
+    background: $color-sale-red;
     color: $color-white;
   }
 
@@ -324,7 +319,8 @@
   }
 
   // Stock alert
-  .product-stock-alert {
+  .product-stock-alert,
+  .product-stock-available{
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -343,6 +339,15 @@
       font-family: $font-sans;
       font-size: $fs-body-lg;
       color:#E51A1A;
+    }
+  }
+  .product-stock-available{
+    background:#D2FFD6;
+    svg,span{
+      color:#019811;
+    }
+    path{
+      fill:#019811;
     }
   }
 

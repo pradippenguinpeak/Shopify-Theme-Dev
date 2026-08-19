@@ -12,6 +12,7 @@
 @import 'header';
 @import 'megamenu';
 @import 'cart-drawer';
+@import 'search-drawer';
 @import 'hero';
 @import 'collection';
 @import 'product-card';
@@ -86,6 +87,12 @@ h6, .h6 { font-size: $fs-h6; }
   max-width: $container-max;
   padding-left: $gutter;
   padding-right: $gutter;
+  @media(max-width:1499px){
+    padding:0 60px
+  }
+  @media(max-width:1365px){
+    padding:0 40px;
+  }
   @media(max-width:1199px){
     padding:0 20px
   }
