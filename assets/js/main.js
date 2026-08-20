@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     breakpoints: {
       576: { slidesPerView: 2, spaceBetween: 12 },
-      768: { slidesPerView: 3, spaceBetween: 12 },
+      992: { slidesPerView: 3, spaceBetween: 12 },
       1200: { slidesPerView: 4, spaceBetween: 12 },
     },
   });
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         breakpoints: {
           0: { direction: 'horizontal', slidesPerView: 4 },
-          992: { direction: 'vertical', slidesPerView: 4 },
+          768: { direction: 'vertical', slidesPerView: 4 },
         },
         observer: true,
         observeParents: true,
@@ -446,11 +446,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const m = p.querySelector('.megamenu');
 
       p.addEventListener('mouseenter', function () {
-        if (window.innerWidth >= 992) openFor(p);
+        if (window.innerWidth >= 1199) openFor(p);
       });
 
       p.addEventListener('mouseleave', function () {
-        if (window.innerWidth >= 992) {
+        if (window.innerWidth >= 1199) {
           const mm = p.querySelector('.megamenu');
           if (mm) mm.setAttribute('aria-hidden', 'true');
           p.classList.remove('open');
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const link = p.querySelector('a');
       if (link) {
         link.addEventListener('click', function (e) {
-          if (window.innerWidth < 992) {
+          if (window.innerWidth < 1199) {
             e.preventDefault();
             const isOpen = p.classList.toggle('open');
             if (p.querySelector('.megamenu')) p.querySelector('.megamenu').setAttribute('aria-hidden', isOpen ? 'false' : 'true');

@@ -5,11 +5,7 @@
 .about-section {
   background:linear-gradient(85.07deg, #101010 7.14%, #000000 86.66%);
   color: $color-white;
-  padding: $section-padding-y 0;
-
-  @media (max-width: $bp-md) {
-    padding: $section-padding-y-sm 0;
-  }
+  padding-block: clamp(50px, 5.208vw, 100px);
 
   // Two-column grid — swap column order with --media-left
   &__layout {
@@ -21,6 +17,9 @@
     @media (max-width: $bp-lg) {
       grid-template-columns: 1fr;
       gap: 40px;
+    }
+    @media(max-width:767px){
+      gap: 25px;
     }
   }
 
@@ -38,6 +37,9 @@
 
       .section-heading-block .section-title {
         margin-bottom: 24px;
+        @media(max-width:767px){
+          margin-bottom:15px;
+        }
       }
     }
 
@@ -52,6 +54,9 @@
     font-size: $fs-body-lg;
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 32px;
+    @media(max-width:767px){
+      margin-bottom:20px;
+    }
   }
 
   &__btn {
@@ -70,12 +75,15 @@
       background: $color-white;
       color: $color-black;
     }
+    @media(max-width:767px){
+      min-height:44px;
+    }
   }
 
   // Image column with offset white frame (Figma)
   &__media {
     position: relative;
-    padding: 0 24px 24px 0;
+    padding: 0;
 
     @media (max-width: $bp-sm) {
       padding: 0;
@@ -86,12 +94,17 @@
       position: absolute;
       top: 24px;
       left: -24px;
-      right:48px;
-      bottom: 0;
+      right: 24px;
+      bottom: -24px;
       border: 1px solid $color-white;
       z-index: 0;
       pointer-events: none;
-
+      @media(max-width:991px){
+        top: 10px;
+        left: -10px;
+        right: 10px;
+        bottom: -10px;
+      }
       @media (max-width: $bp-sm) {
         display: none;
       }

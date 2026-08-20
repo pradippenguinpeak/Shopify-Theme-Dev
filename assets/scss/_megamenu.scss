@@ -84,13 +84,19 @@
     .shop-category-section{
         padding:0;
     }
+    @media(max-width:1199px){
+        gap:20px;
+    }
   }
 
   .megamenu__cols { 
     display:flex; 
     gap:30px; 
     width:48%;
-}
+    @media(max-width:1199px){
+        gap:20px;
+    }
+  }
   .megamenu__col {
     width:33.33%;
     &>h4{
@@ -199,6 +205,6 @@
 }
 .is-scrolled{
     .megamenu{
-        top:90px;
+        top:134px;
     }
 }

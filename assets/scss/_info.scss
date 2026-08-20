@@ -103,7 +103,7 @@
       background: transparent;
       padding: 20px 40px 20px 0;
       box-shadow: none;
-      line-height: $lh-normal;
+      line-height: 1.4;
       position: relative;
 
       &:not(.collapsed) {
@@ -140,6 +140,11 @@
       &:hover {
         color: $color-black;
       }
+
+      @media(max-width:767px){
+        padding:15px 30px 15px 0;
+      }
+
     }
 
     .accordion-body {
@@ -156,6 +161,7 @@
     position: relative;
     padding: 0;
     margin-bottom: 24px;
+    width:100%;
 
     @media (max-width: $bp-lg) {
       order: 1;
@@ -175,6 +181,12 @@
       bottom: -20px;
       border: 1px solid #6B6B6B;
       z-index: 0;
+      @media(max-width:991px){
+        top: 10px;
+        left: -10px;
+        right: 10px;
+        bottom: -10px;
+      }
       @media(max-width: $bp-sm) {
         display: none;
       }

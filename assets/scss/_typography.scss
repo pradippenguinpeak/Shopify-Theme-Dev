@@ -26,7 +26,7 @@
 
   color: $color-gray-light;
 
-  line-height: $lh-normal;
+  line-height: 1.2;
 
 }
 
@@ -151,22 +151,6 @@
   line-height: $lh-tight;
 
   text-transform: uppercase;
-
-
-
-  @media (max-width: $bp-md) {
-
-    font-size: 40px;
-
-  }
-
-
-
-  @media (max-width: $bp-sm) {
-
-    font-size: 32px;
-
-  }
 
 }
 
@@ -384,25 +368,12 @@ h6, .h6 {
 .section-header {
 
   display: flex;
-
   align-items: flex-end;
-
   justify-content: space-between;
-
   margin-bottom: 40px;
-
-
-
-  @media (max-width: $bp-md) {
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 16px;
-
+  @media(max-width:1199px){
+    margin-bottom: 25px;
   }
-
 }
 
 
@@ -410,17 +381,14 @@ h6, .h6 {
 .section-header__text {
 
   .section-subtitle {
-
     margin-bottom: 8px;
-
+    @media(max-width:991px){
+      margin-bottom: 4px;  
+    }
   }
 
-
-
   .section-title {
-
     margin: 0;
-
   }
 
 }
@@ -460,6 +428,9 @@ h6, .h6 {
   .section-subtitle {
 
     margin-bottom: 8px;
+    @media(max-width:991px){
+      margin-bottom:4px;
+    }
 
   }
 
@@ -469,7 +440,7 @@ h6, .h6 {
 
     margin-bottom: 24px;
     @media(max-width: $bp-md) {
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
   }
@@ -479,6 +450,9 @@ h6, .h6 {
   &--lg .section-title {
 
     margin-bottom: 36px;
+     @media(max-width: $bp-md) {
+      margin-bottom: 15px;
+    }
 
   }
 
@@ -517,7 +491,9 @@ h6, .h6 {
 .section-heading {
 
   margin-bottom: 40px;
-
+  @media(max-width:767px){
+    margin-bottom:20px;
+  }
 
 
   .section-subtitle {

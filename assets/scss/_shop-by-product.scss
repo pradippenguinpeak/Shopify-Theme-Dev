@@ -32,19 +32,16 @@
     }
     @media (max-width: $bp-lg) {
       position: static;
+      margin-bottom:20px;
     }
 
     .section-heading-block {
       margin-bottom: 36px;
 
-      @media (max-width: $bp-lg) {
-        margin-bottom: 28px;
+      @media (max-width:1199px) {
+        margin-bottom: 15px;
       }
-
-      .section-subtitle {
-        margin-bottom: 10px;
-      }
-
+     
       .section-title {
         margin-bottom: 0;
       }
@@ -58,7 +55,6 @@
     @media (max-width: $bp-lg) {
       flex-direction: row;
       overflow-x: auto;
-      border-bottom: 1px solid $color-border;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
 
@@ -80,14 +76,16 @@
     cursor: pointer;
     text-align: left;
     transition: all $transition-base;
-
+    @media(max-width:1199px){
+      padding:12px 15px;
+    }
     @media (max-width: $bp-lg) {
       width: auto;
       min-width: max-content;
       border-left: none;
       border-bottom: 3px solid transparent; 
-      margin:0 20px 20px 0;
-      padding:5px 0;
+      margin:0 20px 10px 0;
+      padding:0;
     }
 
     .shop-by-product__nav-label {
@@ -196,8 +194,7 @@
     background: transparent;
     padding: 0;
     @media(max-width:575px){
-      padding:0 0 15px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     &:nth-child(2n) {
@@ -205,7 +202,7 @@
       margin-bottom:-60px;
       @media(max-width:575px){
         margin-top:0;
-        margin-bottom:20px;
+        margin-bottom:15px;
       }
     }
     &:last-child{
@@ -220,6 +217,9 @@
       img{
         object-fit: contain;
         max-height: 671px;
+        @media(max-width:767px){
+          max-height: 350px;
+        }
       }
     }
     &__name{
@@ -239,6 +239,9 @@
     .latest-card__info {
       padding:30px;
       transition: all $transition-base;
+      @media(max-width:767px){
+        padding:20px;
+      }
     }
     &:hover {
       .latest-card__name{

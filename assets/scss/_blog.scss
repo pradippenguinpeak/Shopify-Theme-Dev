@@ -119,12 +119,11 @@
   position: relative;
   overflow: hidden;
 
-  @media (max-width: $bp-md) {
-    padding: $section-padding-y-sm 0;
-  }
-
   .container {
     margin-bottom: 40px;
+    @media(max-width:767px){
+      margin-bottom:20px;
+    }
   }
 
   .social-grid {

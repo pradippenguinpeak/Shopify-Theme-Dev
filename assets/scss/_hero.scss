@@ -14,6 +14,10 @@
   .hero-slider__main {
     min-height: calc(100vh - 134px);
     max-height: calc(100vh - 134px);
+    @media(max-width:767px){
+      max-height:initial;
+      min-height:inherit;
+    }
   }
 
   .hero-slide {
@@ -26,6 +30,10 @@
     @media (max-width: $bp-lg) {
       grid-template-columns: 1fr;
       min-height: auto;
+    }
+    @media(max-width:767px){
+      max-height:initial;
+      min-height:inherit;
     }
   }
 
@@ -43,8 +51,10 @@
       order: 2;
     }
 
-    @media (max-width: $bp-sm) {
+    @media (max-width:767px) {
       padding: 32px 20px;
+      max-height:initial;
+      min-height:inherit;
     }
 
     .hero-subtitle {
@@ -56,6 +66,9 @@
       @include type-hero-title;
       color: $color-black;
       margin-bottom: 24px;
+      @media(max-width:767px){
+        margin-bottom:15px;
+      }
     }
 
     .inline-btns{
@@ -130,6 +143,11 @@
       min-height: 360px;
       flex-direction: row;
       height: auto;
+    }
+    @media(max-width:767px){
+      min-height: 75vh;
+      max-height:75vh;
+      overflow:hidden;
     }
   }
 

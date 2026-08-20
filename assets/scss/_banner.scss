@@ -41,10 +41,12 @@
 
     .promo-desc {
       font-size: $fs-body;
-      line-height: $lh-relaxed;
       margin-bottom: 32px;
       max-width: 420px;
       opacity: 0.85;
+      @media(max-width:767px){
+        margin-bottom:20px;
+      }
     }
 
     .promo-btn {
@@ -56,6 +58,9 @@
       border: 2px solid;
       transition: all $transition-base;
       width: fit-content;
+      @media(max-width:767px){
+        min-height:44px;
+      }
     }
   }
 
