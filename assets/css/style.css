@@ -563,8 +563,37 @@ a:hover {
   }
 }
 @media (max-width: 991px) {
-  .site-header .header-nav {
-    display: none;
+  .site-header .main-menu {
+    display: block;
+    position: fixed;
+    width: 100%;
+    background: #FFF;
+    left: 0;
+    top: 99px;
+    height: calc(100vh - 99px);
+    z-index: 1;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s all;
+  }
+  .site-header .main-menu > ul {
+    display: block;
+  }
+  .site-header .main-menu > ul > li {
+    margin: 0 0 20px;
+  }
+  .site-header .main-menu > ul > li > a {
+    padding: 0;
+  }
+  .site-header .main-menu > ul > li > a:after {
+    bottom: 0;
+  }
+  .site-header .main-menu > ul > li.has-child > span {
+    right: 0;
+  }
+  .site-header.is-scrolled .main-menu {
+    height: calc(100vh - 69px);
   }
   .site-header .mobile-toggle {
     display: flex;
@@ -792,12 +821,13 @@ a:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .megamenu {
     position: static;
     width: 100%;
     box-shadow: none;
     padding: 12px 20px;
+    display: none;
   }
   .megamenu .megamenu__inner {
     flex-direction: column;
@@ -1510,8 +1540,8 @@ a:hover {
 }
 @media (max-width: 767px) {
   .hero-slider .hero-ticker-column {
-    min-height: 75vh;
-    max-height: 75vh;
+    min-height: 63vh;
+    max-height: 63vh;
     overflow: hidden;
   }
 }
@@ -3245,6 +3275,7 @@ a:hover {
 @media (max-width: 992px) {
   .looks-we-love-section .looks-we-love-product-col {
     order: 1;
+    margin-bottom: 30px;
   }
 }
 .looks-we-love-section .looks-we-love-slider {
@@ -4416,11 +4447,6 @@ a:hover {
 }
 .newsletter-section .newsletter-title {
   text-align: center;
-}
-@media (max-width: 767px) {
-  .newsletter-section .newsletter-title {
-    margin-bottom: 15px;
-  }
 }
 .newsletter-section .newsletter-desc {
   font-size: clamp(14px, 0.833vw, 16px);

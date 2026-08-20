@@ -192,11 +192,12 @@
     .megamenu__products-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  @media (max-width: $bp-lg) {
+  @media (max-width:991px) {
     position: static;
     width: 100%;
     box-shadow: none;
     padding: 12px 20px;
+    display: none;
 
     .megamenu__inner { flex-direction: column; gap: 12px; }
     .megamenu__products-grid { grid-template-columns: repeat(2, 1fr); width:100%; }

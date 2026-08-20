@@ -227,10 +227,42 @@
   }
 
   @media (max-width:991px) {
-    .header-nav {
-      display: none;
+    .main-menu{
+      display: block;
+      position: fixed;
+      width: 100%;
+      background: #FFF;
+      left: 0;
+      top:99px;
+      height:calc(100vh - 99px);
+      z-index: 1;
+      padding:20px;
+      opacity:0;
+      visibility:hidden;
+      transition:0.5s all;
+      &>ul{
+        display:block;
+        &>li{
+          margin:0 0 20px;
+          &>a{
+            padding:0;
+            &:after{
+              bottom:0;
+            }
+          }
+          &.has-child{
+            &>span{
+              right:0;
+            }
+          }
+        }
+      }
     }
-
+    &.is-scrolled{
+      .main-menu{
+        height:calc(100vh - 69px);
+      }
+    }
     .mobile-toggle {
       display: flex;
       margin-left:auto;
